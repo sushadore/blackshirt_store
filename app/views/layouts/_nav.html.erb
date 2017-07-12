@@ -5,6 +5,9 @@
 
   <% if is_logged_in? %>
     <%= link_to 'sign out', destroy_user_session_path, method: 'delete' %>
+
+    <%= link_to 'cart', cart_path %>
+
   <% end %>
 
   <% if is_admin? %>

@@ -9,5 +9,13 @@ Rails.application.routes.draw do
     resources :reviews
   end
 
+  resources :users do
+    resources :accounts
+  end
+
+  resources :products
+  resources :order_items
+  resource :cart, only: [:show]
+
   root to: "home#index"
 end

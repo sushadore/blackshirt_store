@@ -1,12 +1,12 @@
 <h1>All Products:</h1>
 
-All Products:
-<ul>
-  <% @products.each do |product| %>
-    <li>
-      <%= link_to product.name, product_path(product) %> -
-      <%= link_to product.description, product_path(product) %> -
-      $<%= link_to product.price, product_path(product) %>
-    </li>
+<% @products.each do |product| %>
+  <%= link_to product.name, product_path(product) %> |
+    <%= product.description%> |
+    <%= number_to_currency product.price %>
+  <%= form_for @order_item do |f| %>
+    <%= f.hidden_field :product_id, value: product.id %>
+    <p>qty: <%= f.number_field :quantity %></p>
+    <p><%= f.submit "Add to cart" %></p>
   <% end %>
-</ul>
+<% end %>

@@ -1,6 +1,14 @@
 <h1>Products Show</h1>
 
 <h1><%= @product.name %></h1>
+<p><%=@product.price %></p>
+<p><%= @product.description %></p>
+
+<%= form_for @order_item do |f| %>
+  <%= f.hidden_field :product_id, value: @product.id %>
+  <p>qty: <%= f.number_field :quantity %></p>
+  <p><%= f.submit "Add to cart" %></p>
+<% end %>
 
 <% if @product.reviews.any? %>
   <h4>Here are the reviews for this product:</h4>
