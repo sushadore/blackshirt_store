@@ -1,0 +1,8 @@
+<h1>Hey yall blackshirts</h1>
+
+<h3><%= current_user.email if current_user %></h3>
+<%= link_to 'sign out', destroy_user_session_path, :method => :delete if current_user %><br><br>
+<%= link_to 'products', products_path(current_user) if current_user %><br><br>
+
+<%= link_to 'sign in', new_user_session_path if !current_user %><br><br>
+<%= link_to 'sign up', new_user_registration_path if !current_user %>
