@@ -8,7 +8,7 @@
   <ul>
     <% @product.reviews.each do |review| %>
       <li>
-        <p>Review: <%= review.content_body %></p>
+        <p>Review: <%= review.content %></p>
         <p>Author: <%= review.author %></p>
         <p>Rating: <%= review.rating %></p>
       </li>
@@ -18,12 +18,10 @@
   <p>There are no reviews yet!</p>
 <% end %>
 
-<p><%= link_to "Add a review", new_product_review_path(@product) %></p>
-
-
-  <%= link_to "Edit Snausage", edit_product_path %><br>
-<p><%= link_to "Delete Product", product_path(@product),
-                        :data => {:confirm => "Are you sure?",
-                        :method => "delete"} %></p>
+<% if is_logged_in? %>
+  <p><%= link_to "Add a review", new_product_review_path(@product) %></p>
+<% else %>
+  <p><%= link_to 'Log in to add a review!', new_user_session_path %></p>
+<% end %>
 
 <p><%= link_to "Return to products", products_path %></p>

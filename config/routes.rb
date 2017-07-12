@@ -5,7 +5,9 @@ Rails.application.routes.draw do
           sessions: 'users/sessions'
         }
 
-  resources :products
+  resources :products do
+    resources :reviews
+  end
 
   root to: "home#index"
 end
