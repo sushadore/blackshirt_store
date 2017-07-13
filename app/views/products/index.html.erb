@@ -1,12 +1,31 @@
-<h1>All Products:</h1>
 
-<% @products.each do |product| %>
-  <%= link_to product.name, product_path(product) %> |
-    <%= product.description%> |
-    <%= number_to_currency product.price %>
-  <%= form_for @order_item do |f| %>
-    <%= f.hidden_field :product_id, value: product.id %>
-    <p>qty: <%= f.number_field :quantity %></p>
-    <p><%= f.submit "Add to cart" %></p>
+<h1>All Products:</h1>
+<br>
+<h2>Your cart</h2>
+<% if @order_items.any? %>
+  <% @order_items.each do |item| %>
+    <p><%= item.product.name %> | <%= link_to "Delete", order_item_path(item), :data => {:confirm => "You sure?", :method => "delete"} %></p>
+    <p> Unit Price: <%= number_to_currency item.product.price %> | Quantity: <%= item.quantity %> | Total Price: <%= number_to_currency (item.product.price * item.quantity) %></p>
+    <br>
   <% end %>
+  <hr>
+  <p>Your Total: <%= number_to_currency current_order.total_price %></p>
+<% else %>
+  <p>Your shopping cart is empty.</p>
 <% end %>
+<div class="row">
+  <div class="col-xs-9">
+    <div id="product_detail"></div>
+  </div>
+  <div class="col-xs-3">
+    <% @products.each do |product| %>
+        <%= link_to product.name, product_path(product), remote: true %> |
+          <%= number_to_currency product.price %>
+          <%= form_for @order_item do |f| %>
+          <%= f.hidden_field :product_id, value: product.id %>
+          <p>qty: <%= f.number_field :quantity %></p>
+          <p><%= f.submit "Add to cart" %></p>
+        <% end %>
+    <% end %>
+  </div>
+</div>

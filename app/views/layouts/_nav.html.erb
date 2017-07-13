@@ -5,12 +5,11 @@
 
   <% if is_logged_in? %>
     <%= link_to 'sign out', destroy_user_session_path, method: 'delete' %>
-
-    <%= link_to 'cart', cart_path %>
-
   <% end %>
 
   <% if is_admin? %>
     <%= link_to 'admin', rails_admin_path %>
   <% end %>
+
+  <%= current_user.email if current_user %>
 </div>

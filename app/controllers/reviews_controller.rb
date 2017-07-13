@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Review has been saved"
       respond_to do |format|
         format.html
-        format.js { redirect_to product_path(@review.product) }
+        format.js { redirect_to products_path }
       end
     else
       render :new

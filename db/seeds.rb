@@ -4,7 +4,7 @@ Review.destroy_all
 40.times do |index|
   product = Product.create!(name: Faker::Commerce.product_name,
                             price: Faker::Commerce.price,
-                            description: Faker::Commerce.department)
+                            description: Faker::ChuckNorris.fact)
   5.times do |index|
     product.reviews.create!(author: Faker::Name.unique.name,
                             rating: Faker::Number.between(1, 5),
