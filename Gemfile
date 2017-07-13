@@ -22,7 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'pivotal_git_scripts'
 
 gem 'rails_admin', '~> 1.2'
-
+gem 'jquery-rails'
 gem 'devise'
 
 # Use CoffeeScript for .coffee assets and views

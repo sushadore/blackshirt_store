@@ -27,7 +27,7 @@
 <% end %>
 
 <% if is_logged_in? %>
-  <p><%= link_to "Add a review", new_product_review_path(@product) %></p>
+  <p><%= link_to "Add a review", new_product_review_path(@product), id: "new_review", remote: true %></p>
 <% else %>
   <p><%= link_to 'Log in to add a review!', new_user_session_path %></p>
 <% end %>
